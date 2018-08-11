@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-title>
+    Product Inventory
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Description}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action" class="mat-cell-fonts">
+        <mat-header-cell class="action" *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell class="action" *matCellDef="let element">
+          <button class="action" mat-raised-button color="primary" type="submit" title="View Product Details" (click)="viewProduct(element)">
+            View Details
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <br><br><br>
+    <button mat-raised-button color="primary" title="Cancel" routerLink="/">
+      Back to Home page
+    </button>
+
+  </mat-card-content>
+</mat-card>
